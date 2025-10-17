@@ -1,0 +1,26 @@
+name: checkout repo dry-run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout-jobs:
+    runs-on: [ubuntu-latest]
+    steps:
+      # Checkout a github repository
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      # List files in repository
+      - name: List repo files
+        run: | 
+          echo "Lists of files"
+          ls -lart
+
+      # Check basic linux command
+      - name: Run a test command within runner
+        run: |
+          echo "This is from default linux runnder from GitHub Action Infra"
+          uname -a
